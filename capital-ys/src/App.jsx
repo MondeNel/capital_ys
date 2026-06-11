@@ -1,4 +1,17 @@
 import { useState } from 'react';
+// Import icons from react-icons (using only valid exports)
+import { 
+  FiMail, FiZap, FiEye, FiTarget, FiFileText, FiTrendingUp, FiBook, 
+  FiBarChart2, FiUsers, FiDollarSign, FiBriefcase, FiAward, FiTool, 
+  FiUpload, FiHeadphones, FiMessageCircle, FiFacebook, FiTwitter, 
+  FiStar, FiSend, FiCheck, FiX, FiGrid, FiMapPin, FiShoppingBag, 
+  FiScissors, FiTruck, FiPackage, FiUser, FiUserCheck, FiSlack, 
+  FiHelpCircle, FiPhone
+} from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
+import { MdOutlineSchool, MdOutlinePhotoCamera, MdOutlineStorefront, MdOutlineBusinessCenter } from 'react-icons/md';
+import { BsFillStarFill, BsStar } from 'react-icons/bs';
+import { HiOutlineDocumentText, HiOutlineChartBar, HiOutlineClipboardList, HiOutlineOfficeBuilding } from 'react-icons/hi';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -53,7 +66,6 @@ function App() {
     setReviews(prev => [newReview, ...prev]);
     setNewReviewText("");
     setNewReviewRating(0);
-    // Reset star colors
     const stars = document.querySelectorAll('#stars span');
     stars.forEach(s => s.style.color = '#D3D1C7');
   };
@@ -123,7 +135,9 @@ const HomePage = ({ changePage }) => (
   <>
     <div className="bg-gradient-to-br from-[#E6F1FB] to-white pt-12 pb-10 px-4 border-b border-gray-200">
       <div className="max-w-6xl mx-auto">
-        <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-2">Business growth, simplified</div>
+        <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-2 flex items-center gap-1">
+          <FiZap className="inline" size={12} /> Business growth, simplified
+        </div>
         <h1 className="text-2xl md:text-3xl font-medium text-gray-900 max-w-lg leading-tight mb-3">
           Do you want funds to grow your <span className="text-[#185FA5]">business?</span> See if you{' '}
           <button onClick={() => changePage('funding')} className="text-[#185FA5] underline inline">qualify</button>
@@ -136,8 +150,12 @@ const HomePage = ({ changePage }) => (
           </button>
         </p>
         <div className="flex gap-3">
-          <button onClick={() => changePage('funding')} className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium">Get funding</button>
-          <button onClick={() => changePage('subscribe')} className="border border-[#185FA5] text-[#185FA5] px-5 py-2 rounded-md text-sm font-medium bg-transparent">View plans</button>
+          <button onClick={() => changePage('funding')} className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+            <FiZap size={14} /> Get funding
+          </button>
+          <button onClick={() => changePage('subscribe')} className="border border-[#185FA5] text-[#185FA5] px-5 py-2 rounded-md text-sm font-medium bg-transparent">
+            View plans
+          </button>
         </div>
       </div>
     </div>
@@ -147,17 +165,21 @@ const HomePage = ({ changePage }) => (
       <h2 className="text-xl font-medium text-gray-900 mb-1">Advertised products & services</h2>
       <p className="text-gray-600 text-sm mb-5">Click any listing to view seller contact details</p>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {[
-          { name: "Chesa Nyama Supplies", cat: "Meat wholesale · Johannesburg", alert: "Seller contact: Thabo Dlamini · 071 234 5678 · thabo@example.com", icon: "🍖" },
-          { name: "Hair & Beauty Tools", cat: "Salon equipment · Soweto", alert: "Seller contact: Naledi Mokoena · 082 345 6789 · naledi@example.com", icon: "✂️" },
-          { name: "Spaza Bulk Goods", cat: "Grocery wholesale · Soweto", alert: "Seller contact: Sipho Ndlovu · 073 456 7890 · sipho@example.com", icon: "🏪" }
-        ].map((ad, idx) => (
-          <div key={idx} onClick={() => alert(ad.alert)} className="border border-gray-200 rounded-lg p-3 hover:border-[#185FA5] cursor-pointer transition-colors">
-            <div className="h-16 bg-[#B5D4F4] rounded-md flex items-center justify-center text-2xl text-[#185FA5] mb-2">{ad.icon}</div>
-            <div className="font-medium text-gray-900 text-sm">{ad.name}</div>
-            <div className="text-gray-500 text-xs">{ad.cat}</div>
-          </div>
-        ))}
+        <div onClick={() => alert('Seller contact: Thabo Dlamini · 071 234 5678 · thabo@example.com')} className="border border-gray-200 rounded-lg p-3 hover:border-[#185FA5] cursor-pointer transition-colors">
+          <div className="h-16 bg-[#B5D4F4] rounded-md flex items-center justify-center text-2xl text-[#185FA5] mb-2"><FiGrid size={28} /></div>
+          <div className="font-medium text-gray-900 text-sm">Chesa Nyama Supplies</div>
+          <div className="text-gray-500 text-xs">Meat wholesale · Johannesburg</div>
+        </div>
+        <div onClick={() => alert('Seller contact: Naledi Mokoena · 082 345 6789 · naledi@example.com')} className="border border-gray-200 rounded-lg p-3 hover:border-[#185FA5] cursor-pointer transition-colors">
+          <div className="h-16 bg-[#B5D4F4] rounded-md flex items-center justify-center text-2xl text-[#185FA5] mb-2"><FiScissors size={28} /></div>
+          <div className="font-medium text-gray-900 text-sm">Hair & Beauty Tools</div>
+          <div className="text-gray-500 text-xs">Salon equipment · Soweto</div>
+        </div>
+        <div onClick={() => alert('Seller contact: Sipho Ndlovu · 073 456 7890 · sipho@example.com')} className="border border-gray-200 rounded-lg p-3 hover:border-[#185FA5] cursor-pointer transition-colors">
+          <div className="h-16 bg-[#B5D4F4] rounded-md flex items-center justify-center text-2xl text-[#185FA5] mb-2"><FiPackage size={28} /></div>
+          <div className="font-medium text-gray-900 text-sm">Spaza Bulk Goods</div>
+          <div className="text-gray-500 text-xs">Grocery wholesale · Soweto</div>
+        </div>
       </div>
     </div>
 
@@ -167,10 +189,10 @@ const HomePage = ({ changePage }) => (
       <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-1">Newsletter</div>
       <h2 className="text-xl font-medium text-gray-900 mb-4">Stay in the loop</h2>
       <div className="bg-[#E6F1FB] rounded-lg p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <span className="text-[#0C447C] text-sm font-medium">📧 Get the latest updates about Capital Ys activities</span>
+        <span className="text-[#0C447C] text-sm font-medium flex items-center gap-2"><FiMail /> Get the latest updates about Capital Ys activities</span>
         <div className="flex gap-2">
           <input type="email" placeholder="Your email address" className="flex-1 px-3 py-2 border border-[#B5D4F4] rounded-md text-sm bg-white" />
-          <button className="bg-[#185FA5] text-white px-4 py-2 rounded-md text-sm whitespace-nowrap">Subscribe</button>
+          <button className="bg-[#185FA5] text-white px-4 py-2 rounded-md text-sm whitespace-nowrap flex items-center gap-1"><FiSend size={14} /> Subscribe</button>
         </div>
       </div>
     </div>
@@ -189,12 +211,12 @@ const AboutPage = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
         <div className="border border-gray-200 rounded-lg p-5">
-          <div className="text-2xl text-[#185FA5] mb-2">👁️</div>
+          <div className="text-2xl text-[#185FA5] mb-2"><FiEye size={24} /></div>
           <div className="font-medium text-gray-900 mb-1">Vision</div>
           <div className="text-gray-600 text-sm">To be the leading business support platform empowering small businesses across South Africa to access funding, compliance, and growth opportunities.</div>
         </div>
         <div className="border border-gray-200 rounded-lg p-5">
-          <div className="text-2xl text-[#185FA5] mb-2">🎯</div>
+          <div className="text-2xl text-[#185FA5] mb-2"><FiTarget size={24} /></div>
           <div className="font-medium text-gray-900 mb-1">Mission</div>
           <div className="text-gray-600 text-sm">To simplify business administration and connect entrepreneurs with the tools, experts, and capital they need to grow and compete sustainably.</div>
         </div>
@@ -213,36 +235,29 @@ const ServicesPage = () => (
       <div>
         <div className="font-medium text-gray-900 text-sm mb-3">Business services</div>
         <div className="space-y-2">
-          {["Business profile", "Business plan", "Market research", "Financial projections", "Bookkeeping", "Financial statements"].map(service => (
-            <div key={service} className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600">
-              <span>📄 {service}</span>
-              <span className="text-[#185FA5] font-medium">R ___</span>
-            </div>
-          ))}
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiFileText size={14} /> Business profile</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><HiOutlineDocumentText size={14} /> Business plan</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><HiOutlineChartBar size={14} /> Market research</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiTrendingUp size={14} /> Financial projections</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiBook size={14} /> Bookkeeping</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiBarChart2 size={14} /> Financial statements</span><span className="text-[#185FA5] font-medium">R ___</span></div>
         </div>
       </div>
       <div>
         <div className="font-medium text-gray-900 text-sm mb-3">Compliance & HR</div>
         <div className="space-y-2">
-          {[
-            { name: "General HR services", free: true },
-            { name: "Payroll management", free: false },
-            { name: "Company registration", free: true },
-            { name: "BBEEE", free: true },
-            { name: "Annual returns", free: true },
-            { name: "E-Filing", free: true }
-          ].map(service => (
-            <div key={service.name} className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600">
-              <span>👥 {service.name}</span>
-              {service.free ? <span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span> : <span className="text-[#185FA5] font-medium">R ___</span>}
-            </div>
-          ))}
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiUsers size={14} /> General HR services</span><span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiDollarSign size={14} /> Payroll management</span><span className="text-[#185FA5] font-medium">R ___</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><HiOutlineOfficeBuilding size={14} /> Company registration</span><span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiAward size={14} /> BBEEE</span><span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><HiOutlineClipboardList size={14} /> Annual returns</span><span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span></div>
+          <div className="flex items-center justify-between py-2 border-b border-gray-200 text-sm text-gray-600"><span className="flex items-center gap-2"><FiTool size={14} /> E-Filing</span><span className="text-xs bg-[#EAF3DE] text-[#27500A] px-2 py-0.5 rounded">*Free</span></div>
         </div>
       </div>
     </div>
     <div className="mt-8 bg-gray-50 rounded-lg p-5 max-w-md">
       <div className="font-medium text-gray-900 text-sm mb-2 flex items-center gap-2">
-        <span className="text-[#185FA5]">🎓</span> Business training
+        <MdOutlineSchool className="text-[#185FA5]" size={20} /> Business training
       </div>
       <div className="text-sm text-gray-600 leading-relaxed">
         Basic HR · Computer literacy · Basic business management<br />
@@ -265,11 +280,11 @@ const SubscribePage = () => (
         <div className="font-medium text-gray-900 mt-1">Free</div>
         <div className="text-2xl font-medium text-[#185FA5] mt-1">R0 <span className="text-xs text-gray-500 font-normal">/ month</span></div>
         <ul className="mt-4 space-y-1 text-sm text-gray-600">
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Newsletter access</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">View home page</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Ask questions</li>
-          <li className="flex items-center gap-1 before:content-['✕_'] before:text-[#E24B4A]">No funding page</li>
-          <li className="flex items-center gap-1 before:content-['✕_'] before:text-[#E24B4A]">No commenting</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Newsletter access</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> View home page</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Ask questions</li>
+          <li className="flex items-center gap-1"><FiX className="text-[#E24B4A]" /> No funding page</li>
+          <li className="flex items-center gap-1"><FiX className="text-[#E24B4A]" /> No commenting</li>
         </ul>
         <button className="w-full mt-5 py-2 rounded-md text-sm font-medium border border-[#185FA5] text-[#185FA5] bg-transparent">Get started</button>
       </div>
@@ -282,12 +297,12 @@ const SubscribePage = () => (
         <div className="font-medium text-gray-900 mt-1">Advanced</div>
         <div className="text-2xl font-medium text-[#185FA5] mt-1">Contact us <span className="text-xs text-gray-500 font-normal">for pricing</span></div>
         <ul className="mt-4 space-y-1 text-sm text-gray-600">
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">All basic features</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Funding page access</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Comment on reviews</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Advertise products</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Limited expert access</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Business trainings</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> All basic features</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Funding page access</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Comment on reviews</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Advertise products</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Limited expert access</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Business trainings</li>
         </ul>
         <button className="w-full mt-5 py-2 rounded-md text-sm font-medium bg-[#185FA5] text-white">Upgrade</button>
       </div>
@@ -297,11 +312,11 @@ const SubscribePage = () => (
         <div className="font-medium text-gray-900 mt-1">Premium</div>
         <div className="text-2xl font-medium text-[#185FA5] mt-1">Contact us <span className="text-xs text-gray-500 font-normal">for pricing</span></div>
         <ul className="mt-4 space-y-1 text-sm text-gray-600">
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">All advanced features</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Auto-qualify for funding</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Unlimited expert access</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Free business training</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Unlimited all services</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> All advanced features</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Auto-qualify for funding</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Unlimited expert access</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Free business training</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Unlimited all services</li>
         </ul>
         <button className="w-full mt-5 py-2 rounded-md text-sm font-medium bg-[#534AB7] text-white">Go premium</button>
       </div>
@@ -311,9 +326,9 @@ const SubscribePage = () => (
         <div className="font-medium text-gray-900 mt-1">Once-off</div>
         <div className="text-2xl font-medium text-[#185FA5] mt-1">Per service <span className="text-xs text-gray-500 font-normal">pricing</span></div>
         <ul className="mt-4 space-y-1 text-sm text-gray-600">
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">All basic services</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">Pay per service used</li>
-          <li className="flex items-center gap-1 before:content-['✓_'] before:text-[#1D9E75]">No commitment</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> All basic services</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> Pay per service used</li>
+          <li className="flex items-center gap-1"><FiCheck className="text-[#1D9E75]" /> No commitment</li>
         </ul>
         <button className="w-full mt-5 py-2 rounded-md text-sm font-medium border border-[#185FA5] text-[#185FA5] bg-transparent">Buy service</button>
       </div>
@@ -331,6 +346,16 @@ const EcosystemPage = ({ ecosystemFilter, setEcosystemFilter, filteredEcosystem 
     { label: 'Hair salon', value: 'salon' },
     { label: 'Car wash', value: 'carwash' }
   ];
+
+  const roleIcon = (roleClass) => {
+    switch(roleClass) {
+      case 'wholesale': return <FiPackage size={12} />;
+      case 'delivery': return <FiTruck size={12} />;
+      case 'retail': return <MdOutlineStorefront size={12} />;
+      case 'photo': return <MdOutlinePhotoCamera size={12} />;
+      default: return <FiUser size={12} />;
+    }
+  };
 
   const roleColor = (roleClass) => {
     switch(roleClass) {
@@ -365,16 +390,18 @@ const EcosystemPage = ({ ecosystemFilter, setEcosystemFilter, filteredEcosystem 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
         {filteredEcosystem.map(item => (
           <div key={item.id} className="border border-gray-200 rounded-lg p-3">
-            <span className={`inline-block text-xs px-2 py-0.5 rounded-full mb-2 ${roleColor(item.roleClass)}`}>{item.role}</span>
+            <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full mb-2 ${roleColor(item.roleClass)}`}>
+              {roleIcon(item.roleClass)} {item.role}
+            </span>
             <div className="font-medium text-gray-900 text-sm">{item.name}</div>
-            <div className="text-gray-500 text-xs">{item.sub}</div>
+            <div className="text-gray-500 text-xs flex items-center gap-1"><FiMapPin size={10} /> {item.sub}</div>
           </div>
         ))}
       </div>
 
       {/* Registration Form */}
       <div className="bg-gray-50 rounded-lg p-6 max-w-lg">
-        <div className="font-medium text-gray-900 mb-4">Register your business</div>
+        <div className="font-medium text-gray-900 mb-4 flex items-center gap-2"><FiUserCheck /> Register your business</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div><label className="block text-xs text-gray-500 mb-1">First name</label><input type="text" placeholder="e.g. Sipho" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white" /></div>
           <div><label className="block text-xs text-gray-500 mb-1">Surname</label><input type="text" placeholder="e.g. Ndlovu" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white" /></div>
@@ -386,7 +413,7 @@ const EcosystemPage = ({ ecosystemFilter, setEcosystemFilter, filteredEcosystem 
           <div><label className="block text-xs text-gray-500 mb-1">Industry</label><select className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white"><option>Spaza shop</option><option>Hair salon</option><option>Chesa nyama</option><option>Car wash</option><option>Plumber</option><option>Electrician</option><option>Mechanic</option></select></div>
           <div><label className="block text-xs text-gray-500 mb-1">City / Province</label><input type="text" placeholder="e.g. Johannesburg, GP" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm bg-white" /></div>
         </div>
-        <button className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium mt-5">Join network</button>
+        <button className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium mt-5 flex items-center gap-2"><FiSend size={14} /> Join network</button>
       </div>
     </div>
   );
@@ -398,24 +425,26 @@ const FundingPage = () => (
     <div className="bg-[#E6F1FB] rounded-lg p-6 mb-6">
       <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-1">Get funding</div>
       <div className="text-xl font-medium text-[#042C53] mb-2">Do you have what it takes to take your business to greater heights?</div>
-      <p className="text-sm text-[#185FA5]">Let us source funding for you. Premium subscribers qualify automatically.</p>
+      <p className="text-sm text-[#185FA5] flex items-center gap-1">
+        <FiZap size={14} /> Let us source funding for you. Premium subscribers qualify automatically.
+      </p>
     </div>
     <div className="max-w-md">
       <div className="border border-dashed border-[#B5D4F4] rounded-lg p-6 text-center cursor-pointer mb-4">
-        <div className="text-3xl text-[#185FA5] mb-2">📤</div>
+        <div className="text-3xl text-[#185FA5] mb-2 flex justify-center"><FiUpload size={32} /></div>
         <div className="font-medium text-gray-900 text-sm">Upload business profile</div>
         <div className="text-xs text-gray-500 mt-1">PDF, DOCX up to 10MB</div>
       </div>
       <div className="border border-dashed border-[#B5D4F4] rounded-lg p-6 text-center cursor-pointer mb-4">
-        <div className="text-3xl text-[#185FA5] mb-2">📄</div>
+        <div className="text-3xl text-[#185FA5] mb-2 flex justify-center"><HiOutlineDocumentText size={32} /></div>
         <div className="font-medium text-gray-900 text-sm">Upload business plan</div>
         <div className="text-xs text-gray-500 mt-1">PDF, DOCX up to 10MB</div>
       </div>
       <div className="bg-gray-50 rounded-lg p-4">
         <div className="text-sm text-gray-600">If we cannot source funding for you, we can help you raise your own funds within 3–9 months.</div>
-        <button className="text-[#185FA5] text-sm inline-flex items-center gap-1 mt-2">📄 Read the document to learn more →</button>
+        <button className="text-[#185FA5] text-sm inline-flex items-center gap-1 mt-2"><FiFileText size={14} /> Read the document to learn more →</button>
       </div>
-      <button className="bg-[#185FA5] text-white w-full py-2 rounded-md text-sm font-medium mt-5">Submit application</button>
+      <button className="bg-[#185FA5] text-white w-full py-2 rounded-md text-sm font-medium mt-5 flex items-center justify-center gap-2"><FiSend size={14} /> Submit application</button>
     </div>
   </div>
 );
@@ -427,25 +456,25 @@ const ContactPage = () => (
     <h2 className="text-xl font-medium text-gray-900 mb-4">Contact us</h2>
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
       <div className="border border-gray-200 rounded-lg p-4">
-        <div className="text-2xl text-[#185FA5] mb-2">📧</div>
+        <div className="text-2xl text-[#185FA5] mb-2"><FiMail size={24} /></div>
         <div className="text-xs text-gray-500">General enquiries</div>
         <div className="text-sm text-[#185FA5] font-medium">Info@capitalys.com</div>
       </div>
       <div className="border border-gray-200 rounded-lg p-4">
-        <div className="text-2xl text-[#185FA5] mb-2">⚖️</div>
+        <div className="text-2xl text-[#185FA5] mb-2"><MdOutlineBusinessCenter size={24} /></div>
         <div className="text-xs text-gray-500">Legal</div>
         <div className="text-sm text-[#185FA5] font-medium">Legal@capitalys.com</div>
       </div>
       <div className="border border-gray-200 rounded-lg p-4">
-        <div className="text-2xl text-[#185FA5] mb-2">🎧</div>
+        <div className="text-2xl text-[#185FA5] mb-2"><FiHeadphones size={24} /></div>
         <div className="text-xs text-gray-500">Technical support</div>
         <div className="text-sm text-[#185FA5] font-medium">Support@capital.co.za</div>
       </div>
     </div>
     <div className="flex gap-3 mt-5">
-      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><span className="text-[#1D9E75]">💬</span> WhatsApp</button>
-      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><span className="text-[#185FA5]">📘</span> Facebook</button>
-      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><span>𝕏</span> X / Twitter</button>
+      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><FaWhatsapp className="text-[#1D9E75]" size={14} /> WhatsApp</button>
+      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><FiFacebook size={14} className="text-[#185FA5]" /> Facebook</button>
+      <button className="flex items-center gap-1 px-4 py-2 border border-gray-300 rounded-md text-xs text-gray-600"><FiTwitter size={14} /> X / Twitter</button>
     </div>
   </div>
 );
@@ -462,7 +491,7 @@ const ReviewsPage = ({ reviews, onHideReview, newReviewText, setNewReviewText, n
         <div key={review.id} className="flex gap-3 pb-4 border-b border-gray-200">
           <div className="w-8 h-8 rounded-full bg-[#B5D4F4] flex items-center justify-center text-xs font-medium text-[#0C447C]">{review.avatar}</div>
           <div className="flex-1">
-            <div className="text-sm font-medium text-gray-900">{review.name} <span className="text-yellow-500 text-xs">{'★'.repeat(review.stars)}{'☆'.repeat(5-review.stars)}</span></div>
+            <div className="text-sm font-medium text-gray-900">{review.name} <span className="text-yellow-500 text-xs inline-flex gap-0.5">{Array(review.stars).fill().map((_, i) => <BsFillStarFill key={i} size={10} />)}{Array(5-review.stars).fill().map((_, i) => <BsStar key={i} size={10} />)}</span></div>
             <div className="text-sm text-gray-600 mt-1">{review.text}</div>
             <button onClick={() => onHideReview(review.id)} className="text-xs text-gray-400 underline mt-1">Hide review</button>
           </div>
@@ -472,7 +501,7 @@ const ReviewsPage = ({ reviews, onHideReview, newReviewText, setNewReviewText, n
 
     {/* Leave a review */}
     <div className="mt-8 bg-gray-50 rounded-lg p-5 max-w-md">
-      <div className="font-medium text-gray-900 text-sm mb-3">Leave a review</div>
+      <div className="font-medium text-gray-900 text-sm mb-3 flex items-center gap-2"><FiMessageCircle size={14} /> Leave a review</div>
       <div className="flex gap-1 text-2xl text-[#D3D1C7] cursor-pointer mb-3" id="stars">
         {[1,2,3,4,5].map(star => (
           <span key={star} onClick={() => setRating(star)}>★</span>
@@ -484,7 +513,7 @@ const ReviewsPage = ({ reviews, onHideReview, newReviewText, setNewReviewText, n
         placeholder="Share your experience..." 
         className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm resize-y min-h-[80px] bg-white"
       />
-      <button onClick={onAddReview} className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium mt-3">Submit review</button>
+      <button onClick={onAddReview} className="bg-[#185FA5] text-white px-5 py-2 rounded-md text-sm font-medium mt-3 flex items-center gap-2"><FiSend size={14} /> Submit review</button>
     </div>
   </div>
 );
