@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import Logo from './Logo';  // import the Logo component
+import Logo from './Logo';
 
 const Navbar = ({ changePage, activePage }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,8 +30,9 @@ const Navbar = ({ changePage, activePage }) => {
       <nav className={`sticky top-0 z-20 transition-all duration-300 ${
         scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200' : 'bg-white border-b border-gray-200'
       } px-4 sm:px-8 h-14 flex items-center justify-between`}>
-        {/* Logo */}
-        <Logo size="md" onClick={() => handlePageChange('home')} />
+        
+        {/* Logo - now larger */}
+        <Logo size="lg" onClick={() => handlePageChange('home')} />
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8">
@@ -52,7 +53,6 @@ const Navbar = ({ changePage, activePage }) => {
           <button onClick={() => handlePageChange('subscribe')} className="bg-[#185FA5] text-white text-sm px-4 py-1.5 rounded-md hover:bg-[#0C447C] transition-colors shadow-sm">
             Get started
           </button>
-          {/* Mobile menu button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-gray-700 focus:outline-none"
@@ -62,7 +62,6 @@ const Navbar = ({ changePage, activePage }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed top-14 left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-10 py-4 px-4 flex flex-col gap-3 animate-fadeIn">
           {pages.map(page => (
