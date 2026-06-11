@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiTrendingUp } from 'react-icons/fi';
 
 const Navbar = ({ changePage, activePage }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,9 +29,13 @@ const Navbar = ({ changePage, activePage }) => {
       <nav className={`sticky top-0 z-20 transition-all duration-300 ${
         scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200' : 'bg-white border-b border-gray-200'
       } px-4 sm:px-8 h-14 flex items-center justify-between`}>
-        <span className="text-[#185FA5] text-lg md:text-xl font-bold tracking-tight cursor-pointer" onClick={() => handlePageChange('home')}>
-          Capital Ys
-        </span>
+        {/* Logo with icon */}
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => handlePageChange('home')}>
+          <div className="bg-[#185FA5] text-white p-1.5 rounded-md">
+            <FiTrendingUp size={18} />
+          </div>
+          <span className="text-[#185FA5] text-lg md:text-xl font-bold tracking-tight">Capital Ys</span>
+        </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8">

@@ -16,11 +16,9 @@ const AboutPage = () => {
     { title: "Community", description: "We build networks that connect local businesses for mutual growth.", icon: <FiUsers size={28} /> }
   ];
 
+  // Single team member
   const team = [
-    { name: "Thabo Dlamini", role: "CEO & Founder", avatar: "TD", bio: "15+ years in SME finance" },
-    { name: "Naledi Mokoena", role: "Head of Operations", avatar: "NM", bio: "Ex-banker, startup advisor" },
-    { name: "Sipho Ndlovu", role: "Funding Specialist", avatar: "SN", bio: "Helped 200+ businesses secure capital" },
-    { name: "Zanele Khumalo", role: "Client Success", avatar: "ZK", bio: "Passionate about entrepreneur growth" }
+    { name: "Sibusiso Mhlongo", role: "Founder & CEO", avatar: "SM", bio: "Passionate about empowering South African SMEs with access to capital and business tools." }
   ];
 
   return (
@@ -95,25 +93,23 @@ const AboutPage = () => {
         </div>
       </div>
 
-      {/* Team Section */}
+      {/* Team Section - Single Member */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-2">Meet the team</div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Dedicated experts behind Capital Ys</h2>
-            <p className="text-gray-600 max-w-xl mx-auto mt-2">We're passionate about helping your business succeed.</p>
+            <div className="text-[#185FA5] text-xs font-semibold tracking-wide mb-2">Meet the founder</div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Dedicated expert behind Capital Ys</h2>
+            <p className="text-gray-600 max-w-xl mx-auto mt-2">Passionate about helping your business succeed.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-5 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all">
-                <div className="w-20 h-20 mx-auto rounded-full bg-[#185FA5]/10 flex items-center justify-center text-[#185FA5] text-xl font-bold mb-3">
-                  {member.avatar}
-                </div>
-                <h3 className="font-bold text-gray-900">{member.name}</h3>
-                <p className="text-[#185FA5] text-sm font-medium">{member.role}</p>
-                <p className="text-gray-500 text-xs mt-1">{member.bio}</p>
+          <div className="flex justify-center">
+            <div className="bg-white rounded-xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all max-w-sm w-full">
+              <div className="w-24 h-24 mx-auto rounded-full bg-[#185FA5]/10 flex items-center justify-center text-[#185FA5] text-2xl font-bold mb-4">
+                {team[0].avatar}
               </div>
-            ))}
+              <h3 className="font-bold text-gray-900 text-xl">{team[0].name}</h3>
+              <p className="text-[#185FA5] text-sm font-medium">{team[0].role}</p>
+              <p className="text-gray-500 text-sm mt-2">{team[0].bio}</p>
+            </div>
           </div>
         </div>
       </div>
