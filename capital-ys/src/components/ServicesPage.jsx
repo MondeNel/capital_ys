@@ -1,5 +1,5 @@
 // src/components/ServicesPage.jsx
-import { FiFileText, FiTrendingUp, FiBook, FiBarChart2, FiUsers, FiDollarSign, FiAward, FiTool, FiCheckCircle } from 'react-icons/fi';
+import { FiFileText, FiTrendingUp, FiBook, FiBarChart2, FiUsers, FiDollarSign, FiAward, FiTool, FiCheckCircle, FiBriefcase, FiShield } from 'react-icons/fi';
 import { HiOutlineDocumentText, HiOutlineChartBar, HiOutlineClipboardList, HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { MdOutlineSchool } from 'react-icons/md';
 
@@ -43,7 +43,7 @@ const ServicesPage = () => {
         {/* Business Services */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all">
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-200 pb-3">
-            <span className="text-[#185FA5]">📊</span> Business services
+            <FiBriefcase className="text-[#185FA5]" size={20} /> Business services
           </h2>
           <div className="space-y-3">
             {businessServices.map((service, idx) => (
@@ -61,7 +61,7 @@ const ServicesPage = () => {
         {/* Compliance & HR */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all">
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-200 pb-3">
-            <span className="text-[#185FA5]">⚖️</span> Compliance & HR
+            <FiShield className="text-[#185FA5]" size={20} /> Compliance & HR
           </h2>
           <div className="space-y-3">
             {complianceServices.map((service, idx) => (
